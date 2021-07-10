@@ -1,1 +1,1 @@
-# collectiveDynamics
+#Collective Dynamics
