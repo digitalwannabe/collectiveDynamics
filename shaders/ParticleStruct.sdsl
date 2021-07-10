@@ -1,0 +1,10 @@
+shader ParticleStruct
+{   
+    struct ParticlePVAC
+    {
+        float4 Pos;
+        float4 Vel;
+        float4 Acc;
+        float4 Color;
+    };
+};

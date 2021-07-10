@@ -1,0 +1,60 @@
+﻿shader CuckerSmale_ComputeFX : ComputeShaderBase, Global, ParticleStruct
+{   
+
+   // SETTINGS ---------------------------------------------------------------------
+    
+
+    cbuffer cbSettings : register(b0)
+    {
+      float K = 1.0;
+      float gamma = 0.25;
+      float zeta = 1.0;
+      bool reset;
+      uint elementCount;
+    }
+
+    // RESOURCES ---------------------------------------------------------------------
+
+    RWStructuredBuffer<ParticlePVAC> ParticlesBuffer;
+
+    // =====================================================================
+    // CS ==================================================================
+    // =====================================================================
+
+    float3 cuckerSmale(uint index){
+	
+      	ParticlePVAC particleA = ParticlesBuffer[index];
+
+      	
+      	float3 acc = 0.0; //initialize?
+      	float dist = 0.0;
+      	float3 velDiff=0.0;
+      	float Hfunc=0;
+      	
+      	for(uint i = 0; i < elementCount; ++i)
+        	{
+          ParticlePVAC particleB = ParticlesBuffer[i];
+        	dist= length(particleB.Pos.xyz-particleA.Pos.xyz);
+      //  	float3 posDiff=abs(particleB.Pos-particleA.Pos);
+        	velDiff = particleB.Vel.xyz-particleA.Vel.xyz;
+      //  	Hfunc = K_gamma_zeta[i].x/(pow((pow(K_gamma_zeta[i].z,2)+pow(dist,2)),K_gamma_zeta[i].y));
+        	Hfunc = K/(pow((pow(zeta,2)+pow(dist,2)),gamma));
+
+      // 	float3 Hfunc_alt = K/(pow((pow(zeta,2)+pow(posDiff,2)),gamma));
+          acc += Hfunc*velDiff;
+        	}
+      	acc=acc/(float)elementCount;
+      	return acc;
+    }
+
+    override void Compute()
+    {
+        uint id = streams.DispatchThreadId.x;
+        ParticlePVAC POut = ParticlesBuffer[id];
+        POut.Acc += float4(cuckerSmale(id),0.);
+        //POut.Vel += cuckerSmale(id);
+    
+        ParticlesBuffer[id] =  POut;
+    }
+};
+

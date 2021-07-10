@@ -1,0 +1,11 @@
+shader Particles
+{   
+    struct ParticleInfo
+    {
+        float3 Center;
+        float3 Min;
+        float3 Max;
+        float3 MinVelocity;
+        float3 MaxVelocity;
+    };
+};

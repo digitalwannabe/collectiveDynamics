@@ -1,0 +1,5 @@
+/_dev/
+/shaders/CountBins_ComputeFX.sdsl
+/shaders/DeJongAttractor3D_ComputeFX.sdsl
+/shaders/ParticleStructPos4Vel4.sdsl
+/shaders/ResetCounter_ComputeFX.sdsl

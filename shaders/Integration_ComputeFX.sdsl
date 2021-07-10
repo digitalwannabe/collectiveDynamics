@@ -1,0 +1,76 @@
+﻿shader Integration_ComputeFX : ComputeShaderBase, Global, ParticleStruct
+{   
+
+   // SETTINGS ---------------------------------------------------------------------
+    cbuffer PerFrame
+    {   
+        uint ParticlesCount;
+        bool Reset;
+        float multiplyNoise =1.;
+    };
+
+
+    // RESOURCES ---------------------------------------------------------------------
+
+    RWStructuredBuffer<ParticlePVAC> ParticlesBuffer;
+    Buffer<float3> RandomValues;
+ //   Buffer<float3> RandomValues;
+
+    Buffer<float4> InitialPositions;
+    Buffer<float4> InitialVelocities;
+
+    // =====================================================================
+    // CS ==================================================================
+    // =====================================================================
+
+    float nrand(float x)
+    {
+    return frac(sin(dot(float2(sin(x),cos(x)), float2(12.9898, 78.233))) * 43758.5453);
+    }
+
+    override void Compute()
+    {
+        uint id = streams.DispatchThreadId.x;
+
+        ParticlePVAC POut = ParticlesBuffer[id];
+
+        float4 Rnd = InitialPositions[id];
+        float4 Rnd2 = InitialVelocities[id];
+
+        // RESET ----------------------------------------------------------------------------
+        if (Reset)
+        {
+            POut = (ParticlePVAC) 0;
+            POut.Pos = Rnd;
+            POut.Vel = Rnd2*TimeStep;
+            POut.Acc = 0;
+        }
+
+         
+        // ====================================================================================
+        // PARTICLE DATA ======================================================================
+        // ====================================================================================
+        float4 Pos = POut.Pos;
+        float4 Vel = POut.Vel;
+        float4 Acc = POut.Acc;
+        float VelLength = length(Vel);
+
+
+        // ====================================================================================
+        // INTEGRATION ========================================================================
+        // ====================================================================================
+
+        // Pos
+        float r1 = nrand(Time+id)-.5;
+        float r2 = nrand(r1*id)-.5;
+        float r3 = nrand(r1+r2*id)-.5;
+
+        Vel = Vel + Acc * TimeStep * 3. + float4(r1,r2,r3,0.)*TimeStep*0.1*multiplyNoise;
+        Pos = Pos + Vel * TimeStep * 3.;
+        POut.Vel = Vel;
+        POut.Pos = Pos;
+    
+        ParticlesBuffer[id] =  POut;
+    }
+};
+

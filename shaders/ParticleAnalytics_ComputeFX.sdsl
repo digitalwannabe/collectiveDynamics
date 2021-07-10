@@ -1,0 +1,52 @@
+﻿shader ParticleAnalytics_ComputeFX : ComputeShaderBase, Global, ParticleStruct, Particles
+{   
+
+   // SETTINGS ---------------------------------------------------------------------
+    
+
+    cbuffer cbSettings : register(b0)
+    {
+      uint elementCount;
+//      bool reset;
+//      float3 center = float3(0.,0.,0.);
+    }
+
+    // RESOURCES ---------------------------------------------------------------------
+
+    RWStructuredBuffer<ParticleInfo> ParticleAnalytics;
+    StructuredBuffer<ParticlePVAC> ParticlesBuffer;
+
+    // =====================================================================
+    // CS ==================================================================
+    // =====================================================================
+
+
+    override void Compute()
+    {
+
+
+        uint id = streams.DispatchThreadId.x;
+        ParticleInfo pA = ParticleAnalytics[0];
+
+        if (id>=1) return;
+        
+        pA.Center=0.f;
+        pA.Min=3.402823466e+38F;
+        pA.Max=-3.402823466e+38F;
+        pA.MinVelocity=3.402823466e+38F;
+        pA.MaxVelocity=-3.402823466e+38F; 
+
+        for(uint i = 0; i < elementCount; ++i)
+          {
+            ParticlePVAC p = ParticlesBuffer[i];
+            pA.Center+= p.Pos.xyz/elementCount;
+            pA.Min = min(pA.Min,p.Pos.xyz);
+            pA.Max = max(pA.Max,p.Pos.xyz);
+            pA.MinVelocity = min(pA.MinVelocity,p.Vel.xyz);
+            pA.MaxVelocity = max(pA.MaxVelocity,p.Vel.xyz);
+          }
+    
+        ParticleAnalytics[0] =  pA;
+    }
+};
+
