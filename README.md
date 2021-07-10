@@ -3,7 +3,7 @@
 Real-time simulation tool\
 Based on models discussed in the course
 [Modelling Interacting Particle Systems in Science](http://ufind.univie.ac.at/en/course.html?lv=250031&semester=2021S)\
-by Prof. Sara Merino Aceituno, University of Vienna, 2021\
+Taught by Prof. Sara Merino Aceituno, University of Vienna, 2021\
 \
 Made using GPU compute shaders and [VL](https://visualprogramming.net/)
 \
