@@ -8,7 +8,7 @@ Presented by Prof. Sara Merino Aceituno, University of Vienna, 2021\
 Made using GPU compute shaders and [VL](https://visualprogramming.net/)
 \
 Draft version. At the moment Windows only.\
-Requires a fairly powerful PC, in best case with dedicated GPU.
+Requires a fairly powerful/new PC, in best case with dedicated GPU.
 
 <h2>Implemented Models</h2>
 
