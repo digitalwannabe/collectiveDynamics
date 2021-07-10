@@ -40,7 +40,7 @@ Requires a fairly powerful PC, in best case with dedicated GPU.
 <h1>To use the tool</h1>
 
 
-* Download this zip OR clone/download repo and navigate to *demo* folder 
+* Download this [zip](demo/collectiveDynamics.zip) OR clone/download repo and navigate to *demo* folder 
 * Unpack zip and run collectiveDynamics.exe. Note I have not signed the tool yet, a warning may show up.
 * To reset a slider click it using your mouse wheel
 * In order to use custom initial positions and velocities:
