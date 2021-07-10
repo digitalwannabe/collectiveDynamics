@@ -1,13 +1,14 @@
 <h1>Collective Dynamics</h1>
 
-Real-time simulation tool based on models discussed in the course\
-[Modelling Interacting Particle Systems in Science](http://ufind.univie.ac.at/en/course.html?lv=250031&semester=2021S)
+Real-time simulation tool\
+Based on models discussed in the course
+[Modelling Interacting Particle Systems in Science](http://ufind.univie.ac.at/en/course.html?lv=250031&semester=2021S)\
 by Prof. Sara Merino Aceituno, University of Vienna, 2021\
 \
 Made using GPU compute shaders and [VL](https://visualprogramming.net/)
 \
 Draft version. At the moment Windows only.\
-Requires a decent and fairly new PC, in best case with dedicated GPU.
+Requires a fairly powerful PC, in best case with dedicated GPU.
 
 <h2>Implemented Models</h2>
 
@@ -49,6 +50,11 @@ Requires a decent and fairly new PC, in best case with dedicated GPU.
 
 
 <h1>To run/edit/compile the code</h1>
+
+* Download and install [VL](https://visualprogramming.net/) version 2021.4 or higher
+* Run collectiveDynamics.vl
+* To see/edit the compute shaders representing the models right click on *particleSystemPBR*, select open. In the newly opened window right click on *Simulation*, select open. Here you will see the shaders, right-click again to view them in a text editor.
+* To compile click the button in the top left corner and hit *Export*
 
 
 
