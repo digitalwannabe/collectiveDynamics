@@ -41,8 +41,8 @@
         if (Reset)
         {
             POut = (ParticlePVAC) 0;
-            POut.Pos = Rnd;
-            POut.Vel = Rnd2*TimeStep;
+            POut.Pos.xyz = Rnd.xyz;
+            POut.Vel.xyz = Rnd2.xyz*TimeStep;
             POut.Acc = 0;
         }
 
@@ -50,9 +50,9 @@
         // ====================================================================================
         // PARTICLE DATA ======================================================================
         // ====================================================================================
-        float4 Pos = POut.Pos;
-        float4 Vel = POut.Vel;
-        float4 Acc = POut.Acc;
+        float3 Pos = POut.Pos.xyz;
+        float3 Vel = POut.Vel.xyz;
+        float3 Acc = POut.Acc.xyz;
         float VelLength = length(Vel);
 
 
@@ -65,10 +65,10 @@
         float r2 = nrand(r1*id)-.5;
         float r3 = nrand(r1+r2*id)-.5;
 
-        Vel = Vel + Acc * TimeStep * 3. + float4(r1,r2,r3,0.)*TimeStep*0.1*multiplyNoise;
+        Vel = Vel + Acc * TimeStep * 3. + float3(r1,r2,r3)*TimeStep*0.1*multiplyNoise;
         Pos = Pos + Vel * TimeStep * 3.;
-        POut.Vel = Vel;
-        POut.Pos = Pos;
+        POut.Vel.xyz = Vel;
+        POut.Pos.xyz = Pos;
     
         ParticlesBuffer[id] =  POut;
     }
