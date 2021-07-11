@@ -3,12 +3,12 @@
 Real-time simulation tool\
 Based on models discussed in the course
 [Modelling Interacting Particle Systems in Science](http://ufind.univie.ac.at/en/course.html?lv=250031&semester=2021S)\
-by Prof. Sara Merino Aceituno, University of Vienna, 2021\
+Presented by Prof. Sara Merino Aceituno, University of Vienna, 2021\
 \
 Made using GPU compute shaders and [VL](https://visualprogramming.net/)
 \
 Draft version. At the moment Windows only.\
-Requires a fairly powerful PC, in best case with dedicated GPU.
+Requires a fairly powerful/new PC, in best case with dedicated GPU.
 
 <h2>Implemented Models</h2>
 
@@ -40,13 +40,14 @@ Requires a fairly powerful PC, in best case with dedicated GPU.
 <h1>To use the tool</h1>
 
 
-* Download zip below, unpack and run collectiveDynamics.exe
+* Download this [zip](demo/collectiveDynamics.zip) OR clone/download repo and navigate to *demo* folder 
+* Unpack zip and run collectiveDynamics.exe. Note I have not signed the tool yet, a warning may show up.
 * To reset a slider click it using your mouse wheel
 * In order to use custom initial positions and velocities:
   * Create a \*.csv file (e.g. using Excel or python) with 3 values (X,Y,Z) per row, separated by a comma (see /assets/initialPositions.csv as an example)
   * Load them using the specified field in the tool
   * Reset if necessary
-* If you run into performance issues (below 30 fps) you can try to load less particles, see point above.
+* If you run into performance issues (below 25 fps) you can try to load less particles, see point above.
 
 
 <h1>To run/edit/compile the code</h1>
