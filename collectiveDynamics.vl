@@ -826,7 +826,7 @@
               <Pin Id="F3pgeGdbj10MsQnxNIUBSI" Name="Draw Count" Kind="InputPin" />
               <Pin Id="PN6OzMahgk8OzoHvT6bBe9" Name="Output" Kind="StateOutputPin" />
             </Node>
-            <Node Bounds="313,772,114,19" Id="TcUCogoHV0POIixXxZKCR6">
+            <Node Bounds="319,785,114,19" Id="TcUCogoHV0POIixXxZKCR6">
               <p:NodeReference LastCategoryFullName="Stride.Rendering.DrawShaders" LastSymbolSource="VL.Stride.Rendering.EffectShaderNodes">
                 <Choice Kind="ProcessNode" Name="DrawParticles2Shader" />
                 <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
@@ -837,7 +837,7 @@
                   <Choice Kind="TypeFlag" Name="RGBA" />
                 </p:TypeAnnotation>
               </Pin>
-              <Pin Id="SdGKvkT0gYhLA9N6jyTGGO" Name="World" Kind="InputPin" />
+              <Pin Id="UecMjmVeydSMXWtULjnfi2" Name="World" Kind="InputPin" />
               <Pin Id="HYxM1fElbedP2MeThVi7J8" Name="Parameter Setter" Kind="InputPin" />
               <Pin Id="P04Mh4djO2LNcB3pnKRP39" Name="Output" Kind="OutputPin" />
             </Node>
@@ -1432,6 +1432,19 @@
               <Pin Id="K2WX8SiiTr6MJQrt7Px63K" Name="Output" Kind="StateOutputPin" />
             </Node>
             <ControlPoint Id="PCS473PLuIiL4ZlRicX5gK" Bounds="290,579" />
+            <Node Bounds="321,615" Id="GBLrRNmPA62MwFmEDgZ8zN">
+              <p:NodeReference LastCategoryFullName="Math" LastSymbolSource="CoreLibBasics.vl">
+                <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                <Choice Kind="OperationCallFlag" Name="-" />
+              </p:NodeReference>
+              <Pin Id="FLmUt39I135L40lXY7aPBI" Name="Input" Kind="InputPin" DefaultValue="1">
+                <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+                  <Choice Kind="TypeFlag" Name="Float32" />
+                </p:TypeAnnotation>
+              </Pin>
+              <Pin Id="SMz2dUX8uRcPSOSpy7obCF" Name="Input 2" Kind="InputPin" />
+              <Pin Id="LsarO8iTB6pLuegtAXD7jO" Name="Output" Kind="OutputPin" />
+            </Node>
           </Canvas>
           <ProcessDefinition Id="MsVt7hK5BJaPUxdS9XxVP8">
             <Fragment Id="SaPFNfujednLtq3i0Kbu5U" Patch="VPepoyTGHcpNbNMGVHP75i" Enabled="true" />
@@ -1583,7 +1596,6 @@
           <Link Id="ERmQN9OirRMOztWVT7tI0w" Ids="CjHNYnXVHLVMSTqcM09fR9,VjxQ6yHtsiOMG5OmVIyzSD" />
           <Link Id="J18ErBfFpA0MRSerAESRc7" Ids="K2WX8SiiTr6MJQrt7Px63K,H3f0ft1IJg4NMkljh66IJT" />
           <Link Id="IbQ9qwSqGzHMPKAFWxEM8z" Ids="AwXeGpTvinxMvGa4457V12,PCS473PLuIiL4ZlRicX5gK" IsHidden="true" />
-          <Link Id="DynL8U7KHcLLA6deNmKVYP" Ids="PCS473PLuIiL4ZlRicX5gK,NJL3ktIJDhmQKsxccjWT3Z" />
           <Patch Id="VPepoyTGHcpNbNMGVHP75i" Name="Create" />
           <Patch Id="JUnu5cB51WRMyhFWGYtonM" Name="Update" ParticipatingElements="O0wvDprYH6RONnp0iU52Dp">
             <Pin Id="EDM5DtyiFCOPMKpHz2PEeK" Name="K" Kind="InputPin" />
@@ -1609,6 +1621,8 @@
             <Pin Id="RFV0z76N94xLGkTboEKbMF" Name="MaxV" Kind="OutputPin" />
           </Patch>
           <Patch Id="GKbGWsRskIWLZyacrJ8k93" Name="CreateDefault (Hidden)" />
+          <Link Id="GCp2Nan0RRSPngJJtC7MOS" Ids="PCS473PLuIiL4ZlRicX5gK,SMz2dUX8uRcPSOSpy7obCF" />
+          <Link Id="GcLjMaCl8EuM4UcR04NoFn" Ids="LsarO8iTB6pLuegtAXD7jO,NJL3ktIJDhmQKsxccjWT3Z" />
         </Patch>
       </Node>
       <!--

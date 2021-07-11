@@ -13,11 +13,11 @@
     // RESOURCES ---------------------------------------------------------------------
 
     RWStructuredBuffer<ParticlePVAC> ParticlesBuffer;
-    Buffer<float3> RandomValues;
+ //   Buffer<float3> RandomValues;
  //   Buffer<float3> RandomValues;
 
-    Buffer<float4> InitialPositions;
-    Buffer<float4> InitialVelocities;
+    StructuredBuffer<float4> InitialPositions;
+    StructuredBuffer<float4> InitialVelocities;
 
     // =====================================================================
     // CS ==================================================================
@@ -65,8 +65,8 @@
         float r2 = nrand(r1*id)-.5;
         float r3 = nrand(r1+r2*id)-.5;
 
-        Vel = Vel + Acc * TimeStep * 3. + float3(r1,r2,r3)*TimeStep*0.1*multiplyNoise;
-        Pos = Pos + Vel * TimeStep * 3.;
+        Vel = Vel + Acc * TimeStep * 15. + float3(r1,r2,r3)*TimeStep*0.4*multiplyNoise;
+        Pos = Pos + Vel * TimeStep * 15.;
         POut.Vel.xyz = Vel;
         POut.Pos.xyz = Pos;
     
